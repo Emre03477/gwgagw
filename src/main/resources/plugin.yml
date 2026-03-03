@@ -1,0 +1,25 @@
+name: AntiCheat
+version: ${project.version}
+main: com.anticheat.AntiCheatPlugin
+api-version: 1.20
+description: Advanced Anti-Cheat for BoxPvP and SkyBlock
+authors: [AntiCheatDev]
+depend: [ProtocolLib]
+
+permissions:
+  anticheat.bypass:
+    description: Bypass all anti-cheat checks
+    default: false
+  anticheat.staff:
+    description: Receive anti-cheat alerts
+    default: op
+  anticheat.admin:
+    description: Manage the anti-cheat system
+    default: op
+
+commands:
+  anticheat:
+    description: AntiCheat main command
+    aliases: [ac]
+    usage: /anticheat <reload|alerts|violations|debug>
+    permission: anticheat.admin
