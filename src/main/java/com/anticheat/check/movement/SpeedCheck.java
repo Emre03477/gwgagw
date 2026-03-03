@@ -93,7 +93,7 @@ public class SpeedCheck extends Check {
 
         // Update player data
         data.setLastDeltaXZ(deltaXZ);
-        data.setLastLocation(from);
+        data.setLastLocation(to);
     }
 
     private double calculateAllowedSpeed(Player player) {
