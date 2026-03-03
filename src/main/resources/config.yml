@@ -1,0 +1,77 @@
+# AntiCheat Configuration
+# Advanced Anti-Cheat for BoxPvP and SkyBlock
+
+general:
+  # Enable/disable the entire anti-cheat
+  enabled: true
+  # Bypass operators completely (no checks, no alerts)
+  bypass-operators: true
+  # Debug mode (verbose logging)
+  debug: false
+  # Server type: BOXPVP or SKYBLOCK
+  server-type: BOXPVP
+
+checks:
+  speed:
+    enabled: true
+    # Violation threshold before punishment
+    max-violations: 10
+    # Speed limit multiplier (1.0 = default walk speed)
+    speed-limit: 0.35
+    # Buffer decay rate per tick
+    buffer-decay: 0.005
+  killaura:
+    enabled: true
+    max-violations: 8
+    # Max angle deviation for rotation checks (degrees)
+    max-angle-deviation: 10.0
+    # Minimum GCD value for aim assist detection
+    min-gcd: 0.0001
+  reach:
+    enabled: true
+    max-violations: 6
+    # Max reach distance (3.1 for slight lag compensation)
+    max-reach: 3.1
+    # Survival reach is 3.0, creative is 5.0
+    creative-reach: 5.1
+
+tps-thresholds:
+  # Adjust checks based on server TPS
+  # Below this TPS, reduce check sensitivity
+  lag-threshold: 17.0
+  # Multiply violation decay by this when lagging
+  lag-multiplier: 0.5
+
+alerts:
+  # Send alerts to staff members with anticheat.staff permission
+  staff-alerts: true
+  # Log violations to console
+  console-log: true
+  # Discord webhook URL (leave empty to disable)
+  discord-webhook: ""
+  # Minimum violations before alerting
+  alert-threshold: 3
+
+punishments:
+  # Actions: WARN, KICK, BAN, COMMAND
+  action: WARN
+  # Command to run (use %player% placeholder)
+  command: "kick %player% [AntiCheat] Unfair advantage detected"
+  # Ban duration in minutes (0 = permanent)
+  ban-duration: 0
+
+database:
+  # Storage type: SQLITE or MYSQL
+  type: SQLITE
+  sqlite:
+    file: anticheat.db
+  mysql:
+    host: localhost
+    port: 3306
+    database: anticheat
+    username: root
+    password: ""
+    pool-size: 10
+
+exempt-worlds:
+  - "spawn_world"
