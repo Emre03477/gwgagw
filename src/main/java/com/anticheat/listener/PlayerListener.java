@@ -41,10 +41,8 @@ public class PlayerListener implements Listener {
         // BYPASS CHECK - must be first, before any other logic
         if (plugin.getBypassManager().isBypassed(player)) return;
 
-        // Skip if no meaningful movement
-        if (event.getFrom().getX() == event.getTo().getX()
-                && event.getFrom().getZ() == event.getTo().getZ()
-                && event.getFrom().getY() == event.getTo().getY()) {
+        // Skip if no meaningful position change
+        if (!event.hasChangedPosition()) {
             return;
         }
 

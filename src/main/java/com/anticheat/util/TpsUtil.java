@@ -33,7 +33,7 @@ public class TpsUtil extends BukkitRunnable {
             long total = 0;
             for (long t : tickTimes) total += t;
             double avgMs = (double) total / SAMPLE_SIZE;
-            tps = Math.min(20.0, 1000.0 / avgMs);
+            tps = (avgMs > 0) ? Math.min(20.0, 1000.0 / avgMs) : 20.0;
         }
     }
 

@@ -38,6 +38,9 @@ public final class MathUtil {
         return Math.sqrt(variance(values));
     }
 
+    /** Epsilon used as termination threshold in the GCD Euclidean loop. */
+    public static final double GCD_EPSILON = 1.0E-6;
+
     /**
      * Calculate the Greatest Common Divisor of two doubles.
      * Used for GCD flaw detection in aim assist modules.
@@ -45,7 +48,7 @@ public final class MathUtil {
     public static double gcd(double a, double b) {
         a = Math.abs(a);
         b = Math.abs(b);
-        while (b > 1.0E-6) {
+        while (b > GCD_EPSILON) {
             double t = b;
             b = a % b;
             a = t;

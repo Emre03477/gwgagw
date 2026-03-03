@@ -110,6 +110,10 @@ public class AlertManager {
                 os.write(json.getBytes(java.nio.charset.StandardCharsets.UTF_8));
             }
             conn.getResponseCode(); // Complete the request
+            int responseCode = conn.getResponseCode();
+            if (responseCode < 200 || responseCode >= 300) {
+                plugin.getLogger().warning("Discord webhook returned non-2xx status: " + responseCode);
+            }
             conn.disconnect();
         } catch (Exception e) {
             plugin.getLogger().warning("Failed to send Discord webhook: " + e.getMessage());
